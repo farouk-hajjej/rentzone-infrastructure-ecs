@@ -37,7 +37,7 @@ module "Create_nat_gateway" {
   
 }
 
-# Create ALB Security groupe
+# Create  Security groupe
 module "Create_security_group" {
     source                                              = "../modules/security-groups"
 
@@ -45,5 +45,15 @@ module "Create_security_group" {
     vpc_id                                              = module.create_vpc.vpc_id
     
 
+  
+}
+
+
+# Create  ECS Tasks Execution Role
+module "ecs-tasks-execution-role" {
+    source                                              = "../modules/ecs-tasks-execution-role"
+
+    #List all of variables here
+    project_name                                        = module.create_vpc.project_name
   
 }
