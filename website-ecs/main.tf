@@ -16,3 +16,23 @@ module "create_vpc" {
 
   
 }
+
+
+# Create Nat Gateways
+module "Create_nat_gateway" {
+    source                                              = "../modules/nat-gateway"
+
+    #List all of variables here
+    public_subnet_az1_id                                = module.create_vpc.public_subnet_az1_id
+    internet_gateway                                    = module.create_vpc.internet_gateway
+    public_subnet_az2_id                                = module.create_vpc.public_subnet_az2_id
+    vpc_id                                              = module.create_vpc.vpc_id
+    private_app_subnet_az1_id                           = module.create_vpc.private_app_subnet_az1_id
+    private_data_subnet_az1_id                          = module.create_vpc.private_data_subnet_az1_id
+    private_app_subnet_az2_id                           = module.create_vpc.private_app_subnet_az2_id
+    private_data_subnet_az2_id                          = module.create_vpc.private_data_subnet_az2_id
+
+
+
+  
+}
