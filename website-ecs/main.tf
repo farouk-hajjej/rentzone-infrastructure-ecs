@@ -36,3 +36,14 @@ module "Create_nat_gateway" {
 
   
 }
+
+# Create ALB Security groupe
+module "Create_security_group" {
+    source                                              = "../modules/security-groups"
+
+    #List all of variables here
+    vpc_id                                              = module.create_vpc.vpc_id
+    
+
+  
+}
