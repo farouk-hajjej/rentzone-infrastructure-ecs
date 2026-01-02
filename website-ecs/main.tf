@@ -57,3 +57,13 @@ module "ecs-tasks-execution-role" {
     project_name                                        = module.create_vpc.project_name
   
 }
+
+# Create  SSL Certificate
+module "acm" {
+    source                                              = "../modules/acm"
+
+    #List all of variables here
+    # var.varibalbe_name because this is a new variable
+    domain_name                                         = var.domain_name
+    alternative_name                                    = var.alternative_name
+}
