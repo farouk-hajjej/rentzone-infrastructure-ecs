@@ -1,3 +1,4 @@
+# Use Terraform modules to create SSL Certificat and Validate the SSL Certificat using DNS Method
 # request public certificates from the amazon certificate manager.
 resource "aws_acm_certificate" "acm_certificate" {
   # Route 53 --> Dashboard --> Hosted Zone
