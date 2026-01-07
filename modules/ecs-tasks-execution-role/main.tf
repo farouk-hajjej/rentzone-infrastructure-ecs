@@ -12,9 +12,9 @@ data "aws_iam_policy_document" "ecs_tasks_execution_role_policy" {
 
 # create an iam role
 resource "aws_iam_role" "ecs_tasks_execution_role" {
-  name                = "${var.project_name}-ecs-task-execution-role"
+  name = "${var.project_name}-ecs-task-execution-role"
   # Use the data source to Get AWS Manage Policy for ecs tasks roles
-  assume_role_policy  = data.aws_iam_policy_document.ecs_tasks_execution_role_policy.json
+  assume_role_policy = data.aws_iam_policy_document.ecs_tasks_execution_role_policy.json
 
 }
 

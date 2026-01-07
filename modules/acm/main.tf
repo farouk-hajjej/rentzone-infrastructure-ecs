@@ -4,7 +4,7 @@ resource "aws_acm_certificate" "acm_certificate" {
   # Route 53 --> Dashboard --> Hosted Zone
   # Make sure you have a domain name already in your AWS account
 
-  domain_name               = var.domain_name
+  domain_name = var.domain_name
   # This is how we request A SSL certificate for our subdomain
   # if a value is a set of string , you neet to put it in a []
   subject_alternative_names = [var.alternative_name]
@@ -39,7 +39,7 @@ resource "aws_route53_record" "route53_record" {
   type            = each.value.type
   # Hosted Zone ID data "aws_route53_zone" "route53_zone" 
 
-  zone_id         = data.aws_route53_zone.route53_zone.zone_id
+  zone_id = data.aws_route53_zone.route53_zone.zone_id
 }
 
 # validate acm certificates

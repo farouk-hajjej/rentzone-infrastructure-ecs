@@ -6,29 +6,29 @@ resource "aws_security_group" "alb_security_group" {
 
   # The rules that will allow to open  the ports 
   ingress {
-    description      = "http access"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "http access"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
-    description      = "https access"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "https access"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = -1
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags   = {
+  tags = {
     Name = "Alb security group"
   }
 }
@@ -40,30 +40,30 @@ resource "aws_security_group" "ecs_security_group" {
   vpc_id      = var.vpc_id
 
   ingress {
-    description      = "http access"
-    from_port        = 80
-    to_port          = 80
-    protocol         = "tcp"
+    description = "http access"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
     # This is the security group we will allow traffic from if the traffic is coming on port 80 into our container (the application load balancer )
-    security_groups  = [aws_security_group.alb_security_group.id]
+    security_groups = [aws_security_group.alb_security_group.id]
   }
 
   ingress {
-    description      = "https access"
-    from_port        = 443
-    to_port          = 443
-    protocol         = "tcp"
-    security_groups  = [aws_security_group.alb_security_group.id]
+    description     = "https access"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_security_group.id]
   }
 
   egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = -1
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags   = {
+  tags = {
     Name = "ecs security group"
   }
 }
